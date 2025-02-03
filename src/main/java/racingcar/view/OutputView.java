@@ -1,5 +1,9 @@
 package racingcar.view;
 
+import racingcar.model.Position;
+import racingcar.util.Convertor;
+
+import java.util.Collections;
 import java.util.List;
 
 public class OutputView {
@@ -16,14 +20,16 @@ public class OutputView {
         System.out.println("\n실행 결과");
     }
 
-    public static void printCarPosition(String carName, int position) {
-        String positionToLine = ""; // position -> - (직선)
-
-        System.out.println(carName + " : " + positionToLine);
+    public static void printCarPosition(String carName, Position position) {
+        System.out.println(carName + " : " + Convertor.intToLine(position.getIdx()));
     }
 
     public static void printFinalWinner(List<String> carNames) {
         System.out.print("최종 우승자 : ");
         // carNames 출력
+        for (int i = 0 ; i < carNames.size() ; i++) {
+            System.out.print(carNames.get(i));
+            if (i != carNames.size()-1) System.out.print(", ");
+        }
     }
 }

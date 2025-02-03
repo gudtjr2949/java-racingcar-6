@@ -8,7 +8,7 @@ public class InputView {
         return Console.readLine();
     }
 
-    public static String readRound() {
-        return Console.readLine();
+    public static int readRound() {
+        return Integer.parseInt(Console.readLine());
     }
 }

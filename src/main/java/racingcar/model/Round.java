@@ -9,4 +9,15 @@ public class Round {
     public Round(int total) {
         this.total = total;
     }
+
+    @Override
+    public String toString() {
+        return "Round{" +
+                "total=" + total +
+                '}';
+    }
+
+    public int getTotal() {
+        return total;
+    }
 }

@@ -11,4 +11,15 @@ public class Position {
     public void moveForward() {
         this.idx++;
     }
+
+    public int getIdx() {
+        return idx;
+    }
+
+    @Override
+    public String toString() {
+        return "Position{" +
+                "idx=" + idx +
+                '}';
+    }
 }
