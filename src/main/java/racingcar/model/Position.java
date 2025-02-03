@@ -9,6 +9,6 @@ public class Position {
     }
 
     public void moveForward() {
-
+        this.idx++;
     }
 }
