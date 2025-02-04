@@ -15,6 +15,9 @@ public class RaceController {
     private List<Car> cars = new ArrayList<>();
     private Round round;
 
+    /**
+     * TODO : 최적화 필요
+     */
     public void start() {
         inputCar();
         inputRound();
@@ -40,6 +43,9 @@ public class RaceController {
         return winner;
     }
 
+    /**
+     * TODO : 2중 for 문 수정 필요
+     */
     private void racing() {
         for (int i = 0 ; i < round.getTotal() ; i++) {
             for (Car car : cars) {

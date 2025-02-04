@@ -5,7 +5,7 @@ public class Convertor {
 
     /**
      * TODO : 최적화 필요
-     *
+     * 
      */
     public static String intToLine(int num) {
         String result = "";

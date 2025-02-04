@@ -2,6 +2,7 @@ package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.util.RaceConstant;
+import racingcar.util.Validator;
 
 public class Car {
     private String name;
@@ -9,6 +10,7 @@ public class Car {
 
     public Car(String name, int start) {
         // validate Name
+        Validator.isTooLongThenStandard(name);
         this.name = name;
         this.position = new Position(start);
     }
@@ -16,7 +18,7 @@ public class Car {
     public void moveForwardOrNot() {
         // 난수 생성
         int random = Randoms.pickNumberInRange(RaceConstant.RANDOM_START, RaceConstant.RANDOM_END);
-        if (random >= RaceConstant.FORWARD) position.moveForward();
+        if (random >= RaceConstant.FORWARD_STANDARD) position.moveForward();
     }
 
     public String getName() {
