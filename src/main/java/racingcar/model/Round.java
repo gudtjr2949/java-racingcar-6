@@ -13,13 +13,6 @@ public class Round {
         this.total = total;
     }
 
-    @Override
-    public String toString() {
-        return "Round{" +
-                "total=" + total +
-                '}';
-    }
-
     public int getTotal() {
         return total;
     }
