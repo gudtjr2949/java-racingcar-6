@@ -1,7 +1,9 @@
 package racingcar.controller;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.model.Car;
 import racingcar.model.Round;
+import racingcar.util.RaceConstant;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -49,7 +51,7 @@ public class RaceController {
     private void racing() {
         for (int i = 0 ; i < round.getTotal() ; i++) {
             for (Car car : cars) {
-                car.moveForwardOrNot();
+                car.moveForwardOrNot(getRandom());
             }
             // 결과 출력
             for (Car car : cars) {
@@ -57,6 +59,10 @@ public class RaceController {
             }
             System.out.println();
         }
+    }
+
+    private static int getRandom() {
+        return Randoms.pickNumberInRange(RaceConstant.RANDOM_START, RaceConstant.RANDOM_END);
     }
 
     private void inputRound() {
@@ -68,6 +74,6 @@ public class RaceController {
         OutputView.printCarNameInput();
         StringTokenizer st = new StringTokenizer(InputView.readCarName(), ",");
         int size = st.countTokens();
-        for (int i = 0 ; i < size ; i++) cars.add(new Car(st.nextToken(), 0));
+        for (int i = 0 ; i < size ; i++) cars.add(new Car(st.nextToken()));
     }
 }

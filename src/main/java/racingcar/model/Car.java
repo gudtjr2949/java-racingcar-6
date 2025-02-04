@@ -1,6 +1,5 @@
 package racingcar.model;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.util.RaceConstant;
 import racingcar.util.Validator;
 
@@ -8,16 +7,20 @@ public class Car {
     private String name;
     private Position position;
 
-    public Car(String name, int start) {
+    public Car(String name) {
         // validate Name
-        Validator.isTooLongThenStandard(name);
+        validateCarName(name);
         this.name = name;
-        this.position = new Position(start);
+        this.position = new Position(RaceConstant.START_POSITION);
     }
 
-    public void moveForwardOrNot() {
+    private static void validateCarName(String name) {
+        Validator.isTooShortThenStandard(name);
+        Validator.isTooLongThenStandard(name);
+    }
+
+    public void moveForwardOrNot(int random) {
         // 난수 생성
-        int random = Randoms.pickNumberInRange(RaceConstant.RANDOM_START, RaceConstant.RANDOM_END);
         if (random >= RaceConstant.FORWARD_STANDARD) position.moveForward();
     }
 
