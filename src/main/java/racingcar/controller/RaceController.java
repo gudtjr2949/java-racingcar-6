@@ -12,6 +12,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.StringTokenizer;
 
+/**
+ * TODO : 리팩토링 필요. 컨트롤러는 객체를 호출할 용도인데, 현재 코드에선 너무 많은 비즈니스 로직 역할까지 수행중임
+ */
 public class RaceController {
 
     private List<Car> cars = new ArrayList<>();

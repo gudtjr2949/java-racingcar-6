@@ -24,6 +24,9 @@ public class OutputView {
         System.out.println(carName + " : " + Convertor.intToLine(position.getIdx()));
     }
 
+    /**
+     * TODO : 리팩토링 필요
+     */
     public static void printFinalWinner(List<String> carNames) {
         System.out.print("최종 우승자 : ");
         // carNames 출력
