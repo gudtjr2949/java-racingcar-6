@@ -1,19 +1,18 @@
 package racingcar.controller;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.model.Car;
-import racingcar.model.Cars;
+import racingcar.model.CarName;
 import racingcar.model.Round;
 import racingcar.service.RaceService;
-import racingcar.service.RaceServiceImpl;
-import racingcar.util.RaceConstant;
+
+import racingcar.util.MessageConstant;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
-import java.util.StringTokenizer;
+
+import java.util.stream.Collectors;
 
 
 public class RaceController {
@@ -25,29 +24,37 @@ public class RaceController {
     }
 
     public void start() {
-        OutputView.printCarNameInput();
-        Cars cars = inputCar();
-
-        OutputView.printRoundInput();
+        List<Car> carList = inputCar();
         Round round = inputRound();
 
-        RaceService raceService = new RaceServiceImpl();
-
         // 게임 진행
-        OutputView.printResult();
-        raceService.racing(cars, round);
-        OutputView.printFinalWinner(raceService.findWinner(cars));
+        OutputView.printMessage(MessageConstant.RACE_RESULT);
+        raceService.racing(carList, round);
+        raceOver(carList);
+    }
+
+    private List<Car> inputCar() {
+        OutputView.printMessage(MessageConstant.INPUT_CAR_NAME);
+        return createCars(inputCarNames());
+    }
+
+    private List<String> inputCarNames() {
+        return Arrays.asList(InputView.readCarName().split(","));
     }
 
     private Round inputRound() {
+        OutputView.printMessage(MessageConstant.INPUT_TOTAL_ROUND);
         return new Round(InputView.readRound());
     }
 
-    private Cars inputCar() {
-        StringTokenizer st = new StringTokenizer(InputView.readCarName(), ",");
-        int size = st.countTokens();
-        List<Car> list = new ArrayList<>();
-        for (int i = 0 ; i < size ; i++) list.add(new Car(st.nextToken()));
-        return new Cars(list);
+    private List<Car> createCars(List<String> carNames) {
+        return carNames.stream()
+                .map(CarName::new)
+                .map(Car::new)
+                .collect(Collectors.toList());
+    }
+
+    private void raceOver(List<Car> carList) {
+        OutputView.printFinalWinner(raceService.findWinner(carList));
     }
 }

@@ -12,13 +12,14 @@ class PositionTest {
         // given
         int random = 3;
         int firstPosition = 0;
-        Car car = new Car("tom");
+        String carName = "tom";
+        Car car = new Car(new CarName(carName));
 
         // when
         car.moveForwardOrNot(random);
 
         // then
-        assertThat(car.getPosition().getIdx()).isEqualTo(firstPosition);
+        assertThat(car.getPosition()).isEqualTo(firstPosition);
     }
 
     @Test
@@ -26,12 +27,13 @@ class PositionTest {
         // given
         int random = 4;
         int firstPosition = 0;
-        Car car = new Car("tom");
+        String carName = "tom";
+        Car car = new Car(new CarName(carName));
 
         // when
         car.moveForwardOrNot(random);
 
         // then
-        assertThat(car.getPosition().getIdx()).isGreaterThan(firstPosition);
+        assertThat(car.getPosition()).isGreaterThan(firstPosition);
     }
 }

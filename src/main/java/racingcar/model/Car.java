@@ -1,22 +1,14 @@
 package racingcar.model;
 
 import racingcar.util.RaceConstant;
-import racingcar.util.Validator;
 
 public class Car {
-    private String name;
+    private CarName carName;
     private Position position;
 
-    public Car(String name) {
-        // validate Name
-        validateCarName(name);
-        this.name = name;
+    public Car(CarName carName) {
+        this.carName = carName;
         this.position = new Position(RaceConstant.START_POSITION);
-    }
-
-    private static void validateCarName(String name) {
-        Validator.isTooShortThenStandard(name);
-        Validator.isTooLongThenStandard(name);
     }
 
     public void moveForwardOrNot(int random) {
@@ -24,11 +16,11 @@ public class Car {
         if (random >= RaceConstant.FORWARD_STANDARD) position.moveForward();
     }
 
-    public String getName() {
-        return name;
+    public String getCarName() {
+        return carName.getName();
     }
 
-    public Position getPosition() {
-        return position;
+    public int getPosition() {
+        return position.getIdx();
     }
 }

@@ -1,15 +1,11 @@
 package racingcar.util;
 
+import static racingcar.util.RaceConstant.*;
+
 public class Convertor {
     private Convertor(){}
 
-    /**
-     * TODO : 최적화 필요
-     * 
-     */
     public static String intToLine(int num) {
-        String result = "";
-        for (int i = 0 ; i < num ; i++) result += RaceConstant.LINE;
-        return result;
+        return LINE.repeat(num);
     }
 }
