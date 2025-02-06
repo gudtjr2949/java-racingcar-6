@@ -1,9 +1,5 @@
 package racingcar.model;
 
-import racingcar.util.Validator;
-
-import static racingcar.util.Validator.*;
-
 /**
  * 시도 횟수
  */
@@ -17,6 +13,10 @@ public class Round {
 
     private static void validateTotal(int total) {
         isMoreThenZero(total);
+    }
+
+    private static void isMoreThenZero(int num) {
+        if (num <= 0) throw new IllegalArgumentException();
     }
 
     public boolean hasMoreRounds(int curRound) {

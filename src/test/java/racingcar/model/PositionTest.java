@@ -2,8 +2,10 @@ package racingcar.model;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import racingcar.util.RaceConstant;
 
 import static org.assertj.core.api.Assertions.*;
+import static racingcar.util.RaceConstant.*;
 
 class PositionTest {
 
@@ -13,7 +15,7 @@ class PositionTest {
         int random = 3;
         int firstPosition = 0;
         String carName = "tom";
-        Car car = new Car(new CarName(carName));
+        Car car = new Car(new CarName(carName), new Position(firstPosition));
 
         // when
         car.moveForwardOrNot(random);
@@ -28,7 +30,7 @@ class PositionTest {
         int random = 4;
         int firstPosition = 0;
         String carName = "tom";
-        Car car = new Car(new CarName(carName));
+        Car car = new Car(new CarName(carName), new Position(firstPosition));
 
         // when
         car.moveForwardOrNot(random);

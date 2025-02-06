@@ -2,18 +2,19 @@ package racingcar.model;
 
 import racingcar.util.RaceConstant;
 
+import static racingcar.util.RaceConstant.*;
+
 public class Car {
     private CarName carName;
     private Position position;
 
-    public Car(CarName carName) {
+    public Car(CarName carName, Position position) {
         this.carName = carName;
-        this.position = new Position(RaceConstant.START_POSITION);
+        this.position = position;
     }
 
     public void moveForwardOrNot(int random) {
-        // 난수 생성
-        if (random >= RaceConstant.FORWARD_STANDARD) position.moveForward();
+        if (random >= FORWARD_STANDARD) position.moveForward();
     }
 
     public String getCarName() {
